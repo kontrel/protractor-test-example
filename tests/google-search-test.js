@@ -1,29 +1,32 @@
 describe('google search test', function() {
 
-  beforeEach(function() {
+    let mainPage = require('../pages/google-pages/MainPage')
+    let searchResultPage = require('../pages/google-pages/SearchResultPage')
 
-  });
-
-  afterEach(function() {
+    beforeEach(function() {
+      browser.ignoreSynchronization = true;
+      browser.get('https://google.com/');
+    });
   
-  });
-
-  it('should search from google', function() {
-    browser.ignoreSynchronization = true;
-    browser.get('https://google.com/');
-      
-    element(by.id('L2AGLb')).click();
-    element(by.name('q')).sendKeys('protractor');
-      
-    element(by.xpath('(//input[@name="btnK"])[2]')).click();
-    let searchResult = element(by.xpath('(//a[@jsname="qOiK6e"]/h3)[1]'));
-  
-
-    searchResult.getText('value').then(function (actual) {
-      expect('Protractor - end-to-end testing for AngularJS').toEqual(actual);
+    afterEach(function() {
+      browser.executeScript('window.sessionStorage.clear();');
+      browser.executeScript('window.localStorage.clear();');
     });
 
-  
+  it('should search protractor from google', function() {
+    
+    mainPage.acceptConsents();
+    mainPage.search('protractor');
+    searchResultPage.validateResultMessage('Protractor - end-to-end testing for AngularJS')
+      
+  });
+
+  it('should search selenium from google', function() {
+    
+    mainPage.acceptConsents();
+    mainPage.search('selenium');
+    searchResultPage.validateResultMessage('Selenium')
+
   });
 
 });
