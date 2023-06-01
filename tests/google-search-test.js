@@ -9,7 +9,8 @@ describe('google search test', function() {
     });
   
     afterEach(function() {
-      browser.close()
+      browser.executeScript('window.sessionStorage.clear();');
+      browser.executeScript('window.localStorage.clear();');
     });
 
   it('should search protractor from google', function() {
