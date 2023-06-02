@@ -1,10 +1,13 @@
-describe('google search test', function() {
+let parabankMainPage = require('../pages/parabank/ParabankMainPage');
 
-    let parabankMainPage = require('../pages/parabank/ParabankMainPage');
+describe('Parabank tests', function() {
+
+    let parabankMainPageObj;
 
     beforeEach(function() {
-      browser.ignoreSynchronization = true;
-      browser.get('https://parabank.parasoft.com/');
+        browser.ignoreSynchronization = true;
+        browser.get('https://parabank.parasoft.com/');
+        parabankMainPageObj = new parabankMainPage();
     });
   
     afterEach(function() {
@@ -13,9 +16,8 @@ describe('google search test', function() {
     });
 
     it('should log in to parabank', function() {
-        
-        parabankMainPage.login('john', 'demo');
-        parabankMainPage.verifyLoggedIn();
+        parabankMainPageObj.login('john', 'demo');
+        parabankMainPageObj.verifyLoggedIn();
     })
 
 });

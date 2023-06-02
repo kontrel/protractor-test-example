@@ -19,4 +19,4 @@ class MainPage {
 
     }
 }
-module.exports = new MainPage();
+module.exports = MainPage;

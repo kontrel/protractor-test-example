@@ -16,9 +16,7 @@ exports.config = {
     maxSessions: 1,
     
     specs: [
-      // '../tests/test1.js',
-      // '../tests/test2.js',
-      // '../tests/google-search-test.js',
+      '../tests/google-search-test.js',
       '../tests/parabank-test.js'
     ]
   };

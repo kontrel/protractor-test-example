@@ -13,4 +13,4 @@ class SearchResultPage {
         };
     }
 }
-module.exports = new SearchResultPage();
+module.exports = SearchResultPage;
