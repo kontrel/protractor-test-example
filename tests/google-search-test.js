@@ -1,11 +1,16 @@
+let mainPage = require('../pages/google-pages/MainPage')
+let searchResultPage = require('../pages/google-pages/SearchResultPage')
+
 describe('google search test', function() {
 
-    let mainPage = require('../pages/google-pages/MainPage')
-    let searchResultPage = require('../pages/google-pages/SearchResultPage')
+  let mainPageObj;
+  let searchResultPageObj;
 
     beforeEach(function() {
       browser.ignoreSynchronization = true;
       browser.get('https://google.com/');
+      mainPageObj = new mainPage();
+      searchResultPageObj = new searchResultPage();
     });
   
     afterEach(function() {
@@ -15,17 +20,17 @@ describe('google search test', function() {
 
   it('should search protractor from google', function() {
     
-    mainPage.acceptConsents();
-    mainPage.search('protractor');
-    searchResultPage.validateResultMessage('Protractor - end-to-end testing for AngularJS')
+    mainPageObj.acceptConsents();
+    mainPageObj.search('protractor');
+    searchResultPageObj.validateResultMessage('Protractor - end-to-end testing for AngularJS')
       
   });
 
   it('should search selenium from google', function() {
     
-    mainPage.acceptConsents();
-    mainPage.search('selenium');
-    searchResultPage.validateResultMessage('Selenium')
+    mainPageObj.acceptConsents();
+    mainPageObj.search('selenium');
+    searchResultPageObj.validateResultMessage('Selenium')
 
   });
 

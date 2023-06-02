@@ -22,4 +22,4 @@ class ParabankMainPage {
 
     }
 }
-module.exports = new ParabankMainPage();
+module.exports = ParabankMainPage;
